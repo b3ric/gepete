@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #111;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .response-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(62, 60, 60, 0.3);
+            background-color: #111;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            color:#a3c0b2
+        }
+
+        .chat-header {
+            background-color: #111;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 40px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .chat-body {
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .message {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            max-width: 70%;
+        }
+
+        .received {
+            background-color: #007bff;
+        }
+
+        .sent {
+            background-color: #2a2a2a;
+            align-self: flex-end;
+        }
+
+        .message-input {
+            flex-grow: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+            background-color: #444;
+            color: #f0f0f0;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .send-button {
+            padding: 10px 10px;
+            background-color: #116254;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .hover.send-button {
+            background-color: #93e9bd; 
+        }
+        header {
+    background-color: #111;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1><a style="text-decoration: none; color: aquamarine; margin-left: 100px;" href="{% url 'index' %}">gepet</a></h1> <h1><a style="text-decoration: none; color: white;" href="{% url 'index' %}">ê</a></h1>
+    </header>
+    <div class="chat-container">
+        <div class="chat-header">chat
+            <div class="input-container">
+            <form method="post" action="{% url 'chat' %}">
+                {% csrf_token %}
+                <input type="text" name="prompt" class="message-input" placeholder="Olá...">
+                <button class="send-button">Enviar</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    <div class="response-container">
+        {% block includes %}
+        {{ response }}
+        {% endblock includes %}
+    </div>  
+</body>
+</html>

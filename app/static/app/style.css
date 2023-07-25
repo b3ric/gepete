@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+header {
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+header img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.container {
+    max-width: 650px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.button-row {
+    width: 250px;
+    margin: 0 auto;
+    display: inline;
+}
+
+.chat-button {
+    padding: 30px 30px;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color:rgb(58, 86, 138);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto;
+    display: inline;
+    width: 250px;
+    margin-left: 13px;
+
+}
+
+.img-button {
+  padding: 30px 30px;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color:rgb(79, 138, 113);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 auto;
+  display: inline;
+  width: 250px;
+  margin-left: 130px;
+}
+
+.aud-button {
+  padding: 30px 30px;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color:rgb(86, 84, 30);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 auto;
+  display: inline;
+  width: 250px;
+  margin-left: 13px;
+}
+
+.gh-button{
+  font-size: 35px;
+  background-color:rgb(255, 255, 252);
+  margin-left: 80%;
+}
+
+.file-button {
+  padding: 30px 30px;
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color:rgb(107, 60, 6);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 auto;
+  display: inline;
+  width: 250px;
+  margin-left: 130px;
+}
+.chat-button:hover {
+    background-color:rgb(63, 120, 224);
+}
+
+.img-button:hover {
+  background-color:rgb(93, 186, 147);
+
+}
+
+.aud-button:hover {
+  background-color:rgb(143, 139, 39);
+
+}
+
+.file-button:hover {
+  background-color:rgb(169, 96, 13);
+}
+
+.spacing {
+    height: 50px;
+}
+
+
+.blue-text {
+  color: aquamarine; /* Apply the blue color to the text within the span with class "blue-text" */
+}
+
+.white-text {
+  color: white; /* Apply the red color to the text within the span with class "red-text" */
+}

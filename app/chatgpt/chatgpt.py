@@ -2,8 +2,8 @@ import os
 import openai
 
 
-openai.organization = "org-5yY762ZV0aAg2rCUoD2sWQAq"
-openai.api_key = "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"
+openai.organization = ""
+openai.api_key = ""
 
 
 def chat_complete(prompt):

@@ -38,8 +38,6 @@ def aud(request):
             return render(request,'app/aud.html')
     return render(request,'app/aud.html')
         
-def file(request):
-    return render(request,'app/file.html')
 
 def chat(request):
     if request.method == 'POST':
@@ -53,9 +51,6 @@ def chat(request):
             return render(request,'app/chat.html')
     return render(request,'app/chat.html')
 
-"""
-   path("/img", views.index, name="img"),
-    path("/aud", views.index, name="aud"),
-    path("/file", views.index, name="file"),
-    path("/chat", views.index, name="chat"),
-"""
+def file(request):
+    #HEITOR: isso aqui precisa ter uma logica de rede (HTTP protocol) similar as outras funcoes 
+    return render(request,'app/file.html')

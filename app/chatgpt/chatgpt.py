@@ -2,7 +2,7 @@ import os
 import openai
 
 
-openai.organization = ""
+openai.organization = "org-5yY762ZV0aAg2rCUoD2sWQAq"
 openai.api_key = ""
 
 
@@ -37,3 +37,6 @@ def aud2text(f, lang):
     )
 
     return response
+
+# HEITOR: aqui precisa de uma function p enviar um arquivo pra api da OpenAI
+# similar as func acima

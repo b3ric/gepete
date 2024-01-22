@@ -38,5 +38,5 @@ def aud2text(f, lang):
 
     return response
 
-# HEITOR: aqui precisa de uma function p enviar um arquivo pra api da OpenAI
+# heitor/gouveia: aqui precisa de uma function p enviar um arquivo pra api da OpenAI
 # similar as func acima

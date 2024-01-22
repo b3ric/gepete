@@ -3,7 +3,7 @@ import openai
 
 
 openai.organization = "org-5yY762ZV0aAg2rCUoD2sWQAq"
-openai.api_key = ""
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
 def chat_complete(prompt):

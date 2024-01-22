@@ -5,6 +5,11 @@ import sys
 
 
 def main():
+
+    if os.getenv('OPENAI_API_KEY') is None:
+        print("ERROR: env var OPEN_API_KEY not set - exiting")
+        sys.exit(-1)
+
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gepete.settings')
     try:

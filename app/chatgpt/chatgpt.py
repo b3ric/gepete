@@ -20,10 +20,10 @@ def chat_complete(prompt):
 
 def img_gen(prompt):
     response = openai.Image.create(
-        model="image-alpha-001",  
+        model="dall-e-3",  
         prompt=f"{prompt}",  
         n=1,  
-        size="512x512",
+        size="1024x1024",
     )
 
     return response

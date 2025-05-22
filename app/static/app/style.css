@@ -134,3 +134,25 @@ header img {
 .white-text {
   color: white; /* Apply the red color to the text within the span with class "red-text" */
 }
+
+.logo-header {
+  width: 100%;
+  background-color: #1f1f1f;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+}
+
+.logo-de {
+  color: aquamarine;
+}
+
+.logo-brief {
+  color: white;
+}

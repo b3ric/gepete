@@ -1,45 +1,119 @@
-{% load static %}
-
-<!-- Other meta tags and stylesheets -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-<link rel="stylesheet" href="{% static 'app/style.css' %}">
-  
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Atualizar Briefing</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #1f1f1f;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        header a {
+            text-decoration: none;
+            color: aquamarine;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 60px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-align: center;
+        }
+
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            background-color: #2c2c2c;
+            border: 1px solid #333;
+            color: #eee;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .send-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #00b894;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .send-button:hover {
+            background-color: #019170;
+        }
+
+        .response-container {
+            margin-top: 40px;
+            background-color: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            color: #a3c0b2;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1><a style="text-decoration: none; color: aquamarine; margin-left: 100px;" href="{% url 'index' %}">gepet</a></h1> <h1><a style="text-decoration: none; color: white;" href="{% url 'index' %}">ê</a></h1>
+        <a href="{% url 'index' %}">de</a><a href="{% url 'index' %}">.</a>
     </header>
 
-
     <div class="container">
-        <div class="button-row">
-            <div class="button-container">
-                <a style="text-decoration: none;" href="{% url 'chat' %}">
-                    <button class="chat-button"><i class="fas fa-comments"></i> chat</button>                    
-                </a>
-                <a style="text-decoration: none;" href="{% url 'img' %}">
-                    <button class="img-button"><i class="fa-solid fa-image"></i> imagens</button>
-                </a>
-            </div>
-            <div class="spacing"></div>
-            <div class="button-container">
-                <a style="text-decoration: none;" href="{% url 'aud' %}">
-                    <button class="aud-button">
-                        <i class="fa fa-music"></i> áudio
-                    </button>
-                </a>
-                <a style="text-decoration: none;" href="{% url 'file' %}">
-                    <button class="file-button" disabled><i class="fa fa-file"></i> arquivos</button>          
-                </a> 
-            </div>
-        </div>
+        <h2>Atualizar Briefing</h2>
+        <form method="post" action="{% url 'file' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="doc_file" accept=".docx" required>
+            <textarea name="prompt" rows="6" placeholder="Digite aqui suas anotações da reunião..." required></textarea>
+            <button type="submit" class="send-button">Enviar</button>
+        </form>
     </div>
+
+    {% if response %}
+    <div class="response-container">
+        {{ response }}
+    </div>
+    {% endif %}
 </body>
 </html>

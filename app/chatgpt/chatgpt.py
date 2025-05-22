@@ -1,4 +1,6 @@
+from docx import Document
 import os
+from io import BytesIO
 import openai
 
 
@@ -37,3 +39,36 @@ def aud2text(aud_file, lang):
     )
 
     return response
+
+def update_briefing(doc_file, prompt):
+    doc = Document(doc_file)
+    original_text = "\n".join([para.text for para in doc.paragraphs])
+
+    full_prompt = f"""Update the following donor briefing with the notes provided below.
+
+Original Briefing:
+{original_text}
+
+Meeting Notes:
+{prompt}
+
+Provide a polished, updated version of the briefing, ready to be shared.
+"""
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": full_prompt}],
+        temperature=0.5,
+        max_tokens=1500,
+    )
+
+    updated_text = response['choices'][0]['message']['content']
+
+    updated_doc = Document()
+    for line in updated_text.split("\n"):
+        updated_doc.add_paragraph(line.strip())
+
+    buffer = BytesIO()
+    updated_doc.save(buffer)
+    buffer.seek(0)
+    return buffer

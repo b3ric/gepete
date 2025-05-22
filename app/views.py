@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from .chatgpt import chatgpt
 
 def index(request):
     return render(request,'app/index.html')
-
+    
+    
 def img(request):
     if request.method == 'POST':
         prompt = request.POST.get('prompt')
@@ -41,6 +43,20 @@ def chat(request):
         return render(request,'app/chat.html')
     return render(request,'app/chat.html')
 
-def file():
-    # implementation pending
-    pass
+
+def file(request):
+    if request.method == 'POST':
+        doc_file = request.FILES.get('doc_file')
+        prompt = request.POST.get('prompt')
+
+        if doc_file and prompt:
+            updated_doc_bytes = chatgpt.update_briefing(doc_file, prompt)
+            if updated_doc_bytes:
+                response = HttpResponse(updated_doc_bytes, content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                response['Content-Disposition'] = 'attachment; filename="updated_briefing.docx"'
+                return response
+
+        context = {'response': "Por favor, envie um documento Word e notas da reunião."}
+        return render(request, 'app/file.html', context)
+
+    return render(request, 'app/file.html')
